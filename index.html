@@ -4,13 +4,13 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Manifold Studio · Idea Search Engine</title>
-<meta name="description" content="Compare prompt candidates, explain what works, and decide what carries into the next round." />
+<meta name="description" content="Human-guided creative search: compare ideas, critique them, and carry accepted feedback into the next batch. A recorded walkthrough of a complete local application." />
 <link rel="canonical" href="https://eduardo1100.github.io/manifold-studio/" />
 <link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=6b3d4998cc20" />
 
 <meta property="og:type" content="website" />
 <meta property="og:title" content="Manifold Studio · Idea Search Engine" />
-<meta property="og:description" content="Compare prompt candidates, explain what works, and decide what carries into the next round." />
+<meta property="og:description" content="Human-guided creative search: compare ideas, critique them, and carry accepted feedback into the next batch. A recorded walkthrough of a complete local application." />
 <meta property="og:url" content="https://eduardo1100.github.io/manifold-studio/" />
 <meta property="og:image" content="https://eduardo1100.github.io/manifold-studio/social-preview.png" />
 <meta property="og:image:width" content="1200" />
@@ -19,7 +19,7 @@
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Manifold Studio · Idea Search Engine" />
-<meta name="twitter:description" content="Compare prompt candidates, explain what works, and decide what carries into the next round." />
+<meta name="twitter:description" content="Human-guided creative search: compare ideas, critique them, and carry accepted feedback into the next batch. A recorded walkthrough of a complete local application." />
 <meta name="twitter:image" content="https://eduardo1100.github.io/manifold-studio/social-preview.png" />
 <meta name="twitter:image:alt" content="Manifold Studio Idea Search Engine — Compare prompt candidates, explain what works, and decide what carries into the next round." />
 <style>
@@ -1107,6 +1107,62 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
   .workspace-note { margin-left: 0; }
 }
 
+/* Show the creative decision before the implementation metadata. */
+body { font-size: 16px; }
+.title-band { padding-block: 2rem 1.75rem; }
+.title-band h1 { font-size: clamp(2.2rem, 3.3vw, 3.15rem); line-height: 1.12; }
+.hero-sub { font-size: 1.0625rem; line-height: 1.65; max-width: 65ch; margin-bottom: .65rem; }
+.demo-disclosure { color: var(--text-dim); font-size: .875rem; line-height: 1.6; max-width: 74ch; margin-block: .4rem .8rem; }
+.app-status { font-size: .8125rem; }
+.app-status-dot { background: var(--text-dim); box-shadow: none; }
+.context-chip-key, .eyebrow, .recipe-row-key, .recipe-rail-title,
+.sheet-card-state, .sheet-card-id, .sheet-card-foot, .batch-slate,
+.recipe-memory-count, .recipe-memory-state, .generate-key-reason { font-size: .75rem; }
+.context-chip-value, .app-nav-link, .workspace-intro-sub, .workspace-note,
+.stage-tab-title, .recipe-row-value, .recipe-chip, .recipe-memory-note,
+.recipe-memory-mode, .sheet-card-open, .batch-footer p { font-size: .875rem; }
+.context-row .context-chip:first-child { display: none; }
+.workspace-intro-title { font-size: 1rem; }
+.workspace-intro { align-items: baseline; gap: .45rem 1rem; }
+.stage-tab-desc, .stage-tab-no { font-size: .75rem; }
+.stage-panel { grid-template-columns: 260px minmax(0, 1fr) 285px; gap: 1rem; }
+.stage-explainer { grid-column: 1 / -1; padding: 1rem 0 .35rem; }
+.stage-explainer h2 { margin: .35rem 0 .4rem; font-size: 1.3rem; line-height: 1.35; letter-spacing: -.02em; }
+.stage-explainer p { margin: 0; max-width: 80ch; color: var(--text-dim); font-size: 1rem; line-height: 1.65; }
+.sheet-grid { grid-template-columns: 1fr; }
+.sheet-card { min-height: auto; padding: 1rem; }
+.sheet-card-prompt { display: block; -webkit-line-clamp: unset; overflow: visible; font-size: 1rem; line-height: 1.6; }
+.recipe-brief, .focused-prompt, .feedback-body, .proposal-text,
+.memory-item-text, .panel p, .limitations-list, .region-note { font-size: 1rem; line-height: 1.65; }
+.panel h3 { font-size: 1.0625rem; line-height: 1.4; }
+.mono, code, .recipe-memory-state { overflow-wrap: anywhere; }
+.method-overview { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; }
+.method-details { margin-top: 1.5rem; border: 1px solid var(--line-2); border-radius: var(--r-md); background: var(--ink-850); }
+.method-details summary { padding: 1.1rem; font-size: 1rem; font-weight: 600; cursor: pointer; }
+.method-details .method-grid { padding: 0 1rem 1rem; }
+.method-details summary:focus-visible { outline: 2px solid var(--cyan); outline-offset: -4px; }
+.research-connection { margin-top: 1.4rem; color: var(--text-dim); font-size: 1rem; }
+.research-connection a { color: var(--cyan); text-underline-offset: .2em; }
+.evidence-table { table-layout: fixed; width: 100%; }
+.evidence-table td, .evidence-table th { overflow-wrap: anywhere; }
+@media (max-width: 1150px) {
+  .stage-panel { grid-template-columns: 220px minmax(0,1fr); }
+  .pending-rail { grid-column: 1 / -1; }
+}
+@media (max-width: 760px) {
+  .stage-panel { grid-template-columns: minmax(0,1fr); }
+  .stage-panel > * { min-width: 0; }
+  .stage-explainer { grid-column: 1; }
+  .method-overview { grid-template-columns: 1fr; }
+  .title-band { padding-block: 1.6rem 1.3rem; }
+  .workspace-note { display: none; }
+  .sheet-grid { padding: .8rem; }
+  .recipe-rail { grid-template-columns: 1fr; }
+  .context-chip { white-space: normal; }
+  .method-grid { grid-template-columns: minmax(0,1fr); }
+  .panel-wide { grid-column: auto; }
+}
+
 </style>
 </head>
 <body>
@@ -1124,9 +1180,9 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
       <nav class="app-nav" aria-label="Studio sections">
         <a class="app-nav-link is-active" href="#loop">Idea Search Engine</a><a class="app-nav-link" href="#memory">Memory</a><a class="app-nav-link" href="#history">History</a><a class="app-nav-link" href="#method">Method</a>
       </nav>
-      <span class="app-status" aria-label="Read-only showcase">
+      <span class="app-status" aria-label="Recorded demonstration">
         <span class="app-status-dot" aria-hidden="true"></span>
-        Read-only
+        Recorded demo
       </span>
     </div>
     <div class="context-row" aria-label="Cockpit context (read-only)">
@@ -1137,18 +1193,19 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
   <main class="app-main">
 
     <section class="title-band">
-      <p class="eyebrow">Creative direction</p>
+      <p class="eyebrow">Human-guided creative search</p>
       <h1>Idea Search Engine</h1>
-      <p class="hero-sub">Compare prompt candidates, explain what works, and decide what carries into the next round.</p>
-      <a class="method-link" href="#method">Evidence and method<span aria-hidden="true">&rarr;</span></a>
+      <p class="hero-sub">Compare creative directions, explain your preferences, and decide which guidance the AI carries into its next attempt.</p>
+      <p class="demo-disclosure">A recorded walkthrough using fixed mock outputs. Choose a stage to inspect how critique becomes memory.</p>
+      <a class="method-link" href="#method">Evidence and method</a>
     </section>
 
     <section class="region region-loop" id="loop">
       <div class="workspace-bar">
         <div class="workspace-intro">
-          <p class="workspace-intro-title">Walk through one completed loop</p>
-          <p class="workspace-intro-sub">Choose a stage to see what the creator, model, and memory contain at that moment.</p>
-          <p class="workspace-note">Static projection of one recorded session &mdash; controls show recorded values.</p>
+          <p class="workspace-intro-title">From critique to the next batch</p>
+          <p class="workspace-intro-sub">Follow one citrus-fragrance brief through comparison, judgment, approval, and regeneration.</p>
+          <p class="workspace-note">Recorded example &middot; Select a stage</p>
         </div>
         <nav class="stage-switcher" aria-label="Workflow stage">
           <a class="stage-tab is-default-tab" href="#stage-compare"><span class="stage-tab-no">01</span><span class="stage-tab-title">Compare</span><span class="stage-tab-desc">Review the starting set</span></a><a class="stage-tab" href="#stage-judge"><span class="stage-tab-no">02</span><span class="stage-tab-title">Judge</span><span class="stage-tab-desc">Write grounded feedback</span></a><a class="stage-tab" href="#stage-propose"><span class="stage-tab-no">03</span><span class="stage-tab-title">Propose</span><span class="stage-tab-desc">Inspect drafted guidance</span></a><a class="stage-tab" href="#stage-decide"><span class="stage-tab-no">04</span><span class="stage-tab-title">Decide</span><span class="stage-tab-desc">Accept, edit, or reject</span></a><a class="stage-tab" href="#stage-regenerate"><span class="stage-tab-no">05</span><span class="stage-tab-title">Regenerate</span><span class="stage-tab-desc">Apply accepted memory</span></a><a class="stage-tab" href="#stage-trace"><span class="stage-tab-no">06</span><span class="stage-tab-title">Trace</span><span class="stage-tab-desc">Audit what carried forward</span></a>
@@ -1158,6 +1215,7 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
       <div class="loop-workspace">
 
       <section class="stage-panel is-default" id="stage-compare" aria-label="Compare stage">
+        <div class="stage-explainer"><span class="eyebrow">Step 01 / 06</span><h2>Three directions for the same brief.</h2><p>The starting batch gives the creator concrete alternatives to judge. No guidance has been accepted yet.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -1301,6 +1359,7 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
 
 
       <section class="stage-panel" id="stage-judge" aria-label="Judge stage">
+        <div class="stage-explainer"><span class="eyebrow">Step 02 / 06</span><h2>Critique the specific idea in front of you.</h2><p>The feedback names what works, what fails, and what should survive the next attempt. It remains attached to that candidate.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -1420,6 +1479,7 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
 
 
       <section class="stage-panel" id="stage-propose" aria-label="Propose stage">
+        <div class="stage-explainer"><span class="eyebrow">Step 03 / 06</span><h2>The model drafts guidance from the critique.</h2><p>These are proposals for memory. Drafting them does not make them part of future generation.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -1641,6 +1701,7 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
 
 
       <section class="stage-panel" id="stage-decide" aria-label="Decide stage">
+        <div class="stage-explainer"><span class="eyebrow">Step 04 / 06</span><h2>The person decides what becomes memory.</h2><p>Accept useful guidance, correct an overgeneralization, or reject a proposal. Only accepted guidance can carry forward.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -1869,6 +1930,7 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
 
 
       <section class="stage-panel" id="stage-regenerate" aria-label="Regenerate stage">
+        <div class="stage-explainer"><span class="eyebrow">Step 05 / 06</span><h2>The next batch receives the accepted guidance.</h2><p>Four accepted memory items enter this recorded generation. The fixture shows the handoff using scripted model outputs.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -2037,6 +2099,7 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
 
 
       <section class="stage-panel" id="stage-trace" aria-label="Trace stage">
+        <div class="stage-explainer"><span class="eyebrow">Step 06 / 06</span><h2>Follow a memory item back to its source.</h2><p>The record connects the original candidate, critique, proposal, human decision, and later generation.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -2410,10 +2473,30 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
 
       <section class="region" id="method">
         <div class="region-head">
-          <h2>Method</h2>
-          <p class="region-note">What this page is, what the evidence proves, and what it does not.</p>
+          <h2>Why this was built</h2>
+          <p class="region-note">A complete local application, shown through a recorded example.</p>
         </div>
-
+        <div class="method-overview">
+          <article class="panel">
+            <h3>Feedback should survive the next round.</h3>
+            <p>Creative critique usually stays in a person's head, a chat, or an isolated note.
+            Idea Search ties it to a candidate and turns accepted guidance into memory for later searches.</p>
+          </article>
+          <article class="panel">
+            <h3>The person controls what carries forward.</h3>
+            <p>I built candidate and batch versioning, natural-language feedback, memory proposals,
+            accept/edit/reject decisions, later-generation handoffs, and the records that connect them.</p>
+          </article>
+          <article class="panel">
+            <h3>What the walkthrough demonstrates.</h3>
+            <p>The fixture exercises the real backend's persistence, approval, scoping, and provenance
+            mechanics. Its model outputs are scripted; it does not measure generation quality or production usage.</p>
+          </article>
+        </div>
+        <p class="research-connection">The design grew from my experiments on automated creative selection.
+        <a href="https://eduardo1100.github.io/selector-remains-human/">Read the selector research</a>.</p>
+        <details class="method-details">
+          <summary>Architecture, source evidence, and limitations</summary>
         <div class="method-grid">
           <section class="panel">
             <h3>What this page is</h3>
@@ -2521,6 +2604,7 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
             </ul>
           </section>
         </div>
+        </details>
       </section>
 
   </main>
@@ -2537,3 +2621,4 @@ h1, h2, h3, h4 { letter-spacing: -0.024em; }
 
 </body>
 </html>
+
