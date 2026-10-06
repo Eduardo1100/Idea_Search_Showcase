@@ -90,3 +90,10 @@ Copyright © 2026 Eduardo Cortes. All rights reserved. See
 [COPYRIGHT.md](COPYRIGHT.md). Public availability does not grant a license to
 copy, modify, redistribute, or reuse the application, site, or evidence except
 as permitted by law.
+
+## Manifold identity
+
+The official Manifold logo is the encoder/decoder mark adopted from Manifold
+Research on 2026-10-06. `manifold-logo.svg` is the shared vector master;
+`brand-provenance.json` records its version and checksums. Idea Search keeps
+its own product name beside this family mark.
