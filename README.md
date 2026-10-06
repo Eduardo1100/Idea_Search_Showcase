@@ -5,7 +5,7 @@ AI-generated creative searches.** Compare concrete creative directions, explain
 what works and what misses, review the proposed lessons, and choose what the next
 search inherits.
 
-**Live site:** [Idea Search Showcase](https://eduardo1100.github.io/manifold-studio/)
+**Live site:** [Idea Search Showcase](https://eduardo1100.github.io/Idea_Search_Showcase/)
 
 ## Why I built it
 
@@ -54,7 +54,7 @@ differently.
 
 ## What this repository contains
 
-This Idea Search Showcase repository publishes a static, self-contained
+This repository, `Idea_Search_Showcase`, publishes a static, self-contained
 showcase, its deterministic evidence, and the metadata needed to host it on
 GitHub Pages. Stage links and expandable evidence sections work; generation
 and decision controls display recorded actions.
