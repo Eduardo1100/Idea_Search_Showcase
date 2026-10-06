@@ -3,34 +3,34 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Manifold Studio · Idea Search Engine</title>
-<meta name="description" content="Human-guided creative search: compare ideas, critique them, and carry accepted feedback into the next batch. A recorded walkthrough of a complete local application." />
+<title>Idea Search Showcase · Human judgment into modular memory</title>
+<meta name="description" content="Idea Search turns messy human judgment into modular memory for later AI-generated creative searches. Explore the research, the recorded search loop, and the decisions that make feedback reusable." />
 <link rel="canonical" href="https://eduardo1100.github.io/manifold-studio/" />
-<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=6b3d4998cc20" />
+<link rel="icon" type="image/png" sizes="64x64" href="favicon.png?v=idea-search" />
 
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Manifold Studio · Idea Search Engine" />
-<meta property="og:description" content="Human-guided creative search: compare ideas, critique them, and carry accepted feedback into the next batch. A recorded walkthrough of a complete local application." />
+<meta property="og:title" content="Idea Search Showcase" />
+<meta property="og:description" content="Messy human judgment becomes modular memory for later AI-generated creative searches." />
 <meta property="og:url" content="https://eduardo1100.github.io/manifold-studio/" />
 <meta property="og:image" content="https://eduardo1100.github.io/manifold-studio/social-preview.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Manifold Studio Idea Search Engine — Compare prompt candidates, explain what works, and decide what carries into the next round." />
+<meta property="og:image:alt" content="Idea Search Showcase: human judgment becomes reviewed memory, then context for a later creative search." />
 
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Manifold Studio · Idea Search Engine" />
-<meta name="twitter:description" content="Human-guided creative search: compare ideas, critique them, and carry accepted feedback into the next batch. A recorded walkthrough of a complete local application." />
+<meta name="twitter:title" content="Idea Search Showcase" />
+<meta name="twitter:description" content="Messy human judgment becomes modular memory for later AI-generated creative searches." />
 <meta name="twitter:image" content="https://eduardo1100.github.io/manifold-studio/social-preview.png" />
-<meta name="twitter:image:alt" content="Manifold Studio Idea Search Engine — Compare prompt candidates, explain what works, and decide what carries into the next round." />
+<meta name="twitter:image:alt" content="Idea Search Showcase: human judgment becomes reviewed memory, then context for a later creative search." />
 <style>
 
 /* ===========================================================================
-   Manifold Studio -- Idea Search Engine showcase stylesheet.
+   Idea Search Showcase stylesheet.
 
    Visual tokens below (palette, gradients, glow, typography, borders, button
    treatment, card surfaces) are the approved Manifold baseline, carried over
-   unchanged. This pass changed POSITIONING only: the page is now a
-   projection of the real product's cockpit rather than a landing page.
+   as the visual foundation. The narrative explains human judgment,
+   modular memory, and the recorded application loop.
 
    Layout transplanted from frontend/src/App.css and its components:
 
@@ -59,7 +59,8 @@
      - Dark only. The product persists a light/dark toggle to localStorage;
        a static page cannot, and the brand shell is deliberately dark.
      - No external font requests; only the product's system fallback chains.
-     - Every control is inert. Rails render recorded values, so there are no
+     - Recorded application controls are inert; stage and section links work.
+       Rails render recorded values, so there are no
        textareas, selects, or steppers -- just their resolved state.
      - Rails are sticky but never scroll internally: the projected content is
        short, and nested scrollbars are a product bug not worth copying.
@@ -1164,49 +1165,170 @@ body { font-size: 16px; }
 }
 
 </style>
+<style>
+/* Idea Search: a research instrument with readable, traceable memory. */
+:root { --topbar-h: 4.1rem; }
+.skip-link { position: fixed; left: 1rem; top: .5rem; z-index: 100; padding: .65rem 1rem; background: var(--ink-800); border: 1px solid var(--cyan); transform: translateY(-160%); }
+.skip-link:focus { transform: translateY(0); }
+.topbar-row { min-height: 4rem; }
+.brand { flex-shrink: 0; }
+.idea-mark { display: grid; place-items: center; width: 2rem; height: 2rem; border: 1px solid var(--accent-line); border-radius: .5rem; font-family: var(--font-mono); font-size: .8125rem; font-weight: 700; color: var(--cyan); background: var(--accent-soft); }
+.brand-name { font-size: 1.125rem; }
+.brand-product { font-size: .875rem; }
+.app-nav-link { font-size: .875rem; padding-inline: .65rem; }
+.app-status-dot { display: none; }
+.idea-intro { display: grid; grid-template-columns: minmax(0,1.25fr) minmax(0, .85fr); gap: clamp(2rem, 5vw, 5.5rem); align-items: center; padding-block: clamp(1.65rem, 3vw, 3.2rem); }
+.idea-intro h1 { font-size: clamp(2.75rem, 5vw, 4.75rem); margin-block: .7rem .75rem; }
+.idea-thesis { margin: 0 0 .85rem; font-size: clamp(1.35rem, 2.2vw, 1.9rem); line-height: 1.35; letter-spacing: -.02em; max-width: 31ch; }
+.idea-thesis strong { color: var(--cyan); font-weight: 650; }
+.hero-sub { max-width: 67ch; }
+.intro-links { display: flex; flex-wrap: wrap; gap: .75rem 1.1rem; align-items: center; margin-top: 1.25rem; }
+.intro-primary { display: inline-flex; border: 1px solid var(--action-keyline); border-radius: var(--r-sm); background: var(--action-surface); padding: .65rem .9rem; color: var(--text); font-size: .9375rem; font-weight: 600; }
+.intro-primary:hover { background: var(--action-surface-hover); border-color: var(--action-keyline-strong); }
+.method-link { font-size: .875rem; text-decoration: underline; text-underline-offset: .25em; }
+.origin-note { border: 1px solid var(--line-2); border-top: 2px solid var(--cyan); border-radius: 0 0 var(--r-md) var(--r-md); padding: clamp(1.1rem, 2vw, 1.8rem); background: linear-gradient(140deg, rgba(34,211,238,.06), transparent 70%), var(--ink-850); }
+.origin-note h2 { margin: .75rem 0; font-size: clamp(1.1rem, 1.5vw, 1.4rem); line-height: 1.4; letter-spacing: -.025em; }
+.origin-note p:not(.eyebrow) { font-size: 1rem; color: var(--text-dim); line-height: 1.65; }
+.origin-note strong { color: var(--text); font-weight: 600; }
+.origin-note a, .research-bridge a { font-size: .9375rem; text-decoration: underline; text-underline-offset: .25em; }
+.origin-note .origin-signature { margin-bottom: 0; margin-top: 1.2rem; padding-top: .9rem; border-top: 1px solid var(--line); font-size: .8125rem; }
+.workspace-bar .demo-disclosure { max-width: none; margin: .05rem 0 .15rem; font-size: .875rem; }
+.workspace-intro-title { font-size: 1.0625rem; }
+.workspace-intro-sub { flex-basis: 100%; max-width: 85ch; }
+.workspace-note { display: none; }
+.stage-tab-desc { font-size: .875rem; line-height: 1.4; }
+.stage-tab-no { font-size: .75rem; }
+.stage-tab-title { font-size: .9375rem; }
+.stage-tab { row-gap: .25rem; padding: .65rem .75rem; }
+.stage-next { font-size: .875rem; }
+.stage-next [aria-hidden] { display: none; }
+.region-head h2 { font-size: clamp(1.4rem, 2vw, 1.85rem); line-height: 1.3; }
+.section-lead { color: var(--text-dim); max-width: 87ch; font-size: 1.0625rem; margin: -.1rem 0 1.15rem; }
+.memory-principles { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 1rem; margin-bottom: 1rem; }
+.memory-principles .panel { padding: 1.15rem; }
+.memory-principles h3 { margin-block: .6rem .7rem; }
+.memory-principles p:last-child { margin-bottom: 0; }
+.memory-example { border: 1px solid var(--line-2); border-radius: var(--r-md); background: var(--ink-850); padding: clamp(1rem, 2vw, 1.4rem); margin-bottom: 1.2rem; }
+.memory-example-head h3 { margin: .55rem 0 .5rem; font-size: 1.2rem; line-height: 1.4; }
+.memory-example-head > p:last-child { color: var(--text-dim); max-width: 84ch; margin-bottom: 1.2rem; }
+.memory-example-grid { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(0,.85fr) minmax(0,1fr); gap: .9rem; margin-bottom: 1rem; }
+.memory-example-grid article { border: 1px solid var(--line); border-radius: var(--r-sm); background: var(--ink-900); padding: 1rem; }
+.example-label { display: block; color: var(--text-dim); font-size: .875rem; margin-bottom: .75rem; }
+.memory-example blockquote, .memory-example-grid p { margin: 0; color: var(--text); font-size: 1rem; line-height: 1.65; }
+.memory-example-grid .accepted-example { border-color: var(--accent-line); background: var(--accent-soft); }
+.accepted-example .example-label { color: var(--cyan); }
+.example-note { display: block; margin-top: .8rem; color: var(--text-dim); font-size: .875rem; line-height: 1.5; }
+.memory-example .receipt-link { font-size: .875rem; }
+.ledger-card-content, .ledger-evidence-row span { font-size: 1rem; line-height: 1.65; }
+.ledger-card-topline, .ledger-evidence-row strong, .lifecycle-badge, .lifecycle-chip,
+.panel-note, .teaching-row p, .teaching-state, .teaching-weight,
+.timeline-card p, .history-list li { font-size: .875rem; line-height: 1.6; }
+.panel-count, .ledger-card-topline em, .timeline-card .mono { font-size: .75rem; }
+.research-bridge { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(1.4rem, 3vw, 3rem); margin: 1rem 0 1.4rem; padding: clamp(1.2rem, 2.5vw, 2rem); background: var(--ink-850); border: 1px solid var(--line-2); border-radius: var(--r-md); }
+.research-bridge h3 { margin-block: .6rem .75rem; font-size: 1.25rem; line-height: 1.4; }
+.research-bridge p:not(.eyebrow) { font-size: 1rem; color: var(--text-dim); line-height: 1.65; }
+.research-bridge .bridge-boundary { border-left: 2px solid var(--accent-line); padding-left: .9rem; font-size: .9375rem; }
+.research-connection { max-width: 100ch; }
+.method-details { scroll-margin-top: calc(var(--topbar-h) + 1rem); }
+.site-footer { font-size: .875rem; }
+@supports selector(:has(*)) {
+  body:has(#memory:target, #history:target, #method:target, #evidence:target) .app-nav-link.is-active { background: transparent; color: var(--text-dim); }
+  body:has(#memory:target, #history:target, #method:target, #evidence:target) .app-nav-link.is-active::after { display: none; }
+  body:has(#memory:target) .app-nav-link[href="#memory"],
+  body:has(#history:target) .app-nav-link[href="#history"],
+  body:has(#method:target) .app-nav-link[href="#method"],
+  body:has(#evidence:target) .app-nav-link[href="#evidence"] { background: var(--accent-soft); color: var(--text); }
+}
+@media (max-width: 1100px) {
+  .topbar-row { gap: .75rem; }
+  .brand-product { display: none; }
+  .idea-intro { gap: 1.5rem; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); }
+  .memory-principles { gap: .75rem; }
+}
+@media (max-width: 900px) {
+  :root { --topbar-h: 6.4rem; }
+  .topbar-row { flex-wrap: wrap; padding-block: .6rem; gap: .45rem .75rem; }
+  .app-status { margin-left: auto; }
+  .app-nav { order: 3; flex-basis: 100%; margin-left: 0; overflow-x: auto; scrollbar-width: none; }
+  .app-nav::-webkit-scrollbar { display: none; }
+  .app-nav-link { padding: .35rem .65rem; }
+  .idea-intro { grid-template-columns: minmax(0,1fr); }
+  .origin-note { padding: 1.2rem; }
+  .origin-note h2 { font-size: 1.25rem; }
+  .memory-principles, .memory-example-grid { grid-template-columns: minmax(0,1fr); }
+  .research-bridge { grid-template-columns: minmax(0,1fr); gap: 1.4rem; }
+}
+@media (max-width: 760px) {
+  .idea-intro { padding-block: 1.35rem; gap: 1.5rem; }
+  .idea-intro h1 { font-size: clamp(2.65rem, 11vw, 3.5rem); }
+  .eyebrow { letter-spacing: .12em; }
+  .workspace-bar { position: static; }
+  .stage-tab { flex-basis: 11.5rem; }
+  .workspace-bar .demo-disclosure { font-size: .875rem; }
+  .stage-panel { scroll-margin-top: calc(var(--topbar-h) + .5rem); }
+  .section-lead { font-size: 1rem; }
+  .region-head { display: block; }
+  .region-head h2 { margin-bottom: .5rem; }
+  .region-note { max-width: none; }
+}
+@media (max-width: 400px) {
+  .app-status { font-size: .75rem; padding: .25rem .45rem; }
+  .brand-name { font-size: 1rem; }
+  .idea-mark { width: 1.75rem; height: 1.75rem; }
+}
+</style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
 <div class="app" id="top">
   <div class="app-glow" aria-hidden="true"></div>
 
   <header class="topbar">
     <div class="topbar-row">
-      <a class="brand" href="#top" aria-label="Manifold Studio">
-        <img class="brand-mark" src="manifold-mark.png" alt="" width="34" height="26" decoding="async" />
-        <span class="brand-name">Manifold</span>
-        <span class="brand-product">Studio</span>
+      <a class="brand" href="#top" aria-label="Idea Search Showcase home">
+        <span class="idea-mark" aria-hidden="true">IS</span>
+        <span class="brand-name">Idea Search</span>
+        <span class="brand-product">Showcase</span>
       </a>
-      <nav class="app-nav" aria-label="Studio sections">
-        <a class="app-nav-link is-active" href="#loop">Idea Search Engine</a><a class="app-nav-link" href="#memory">Memory</a><a class="app-nav-link" href="#history">History</a><a class="app-nav-link" href="#method">Method</a>
+      <nav class="app-nav" aria-label="Showcase sections">
+        <a class="app-nav-link is-active" href="#loop">Walkthrough</a><a class="app-nav-link" href="#memory">Memory</a><a class="app-nav-link" href="#history">History</a><a class="app-nav-link" href="#method">Research &amp; design</a><a class="app-nav-link" href="#evidence">Evidence</a>
       </nav>
       <span class="app-status" aria-label="Recorded demonstration">
         <span class="app-status-dot" aria-hidden="true"></span>
         Recorded demo
       </span>
     </div>
-    <div class="context-row" aria-label="Cockpit context (read-only)">
-      <span class="context-chip"><span class="context-chip-key">workspace</span><span class="context-chip-value">Showcase Workspace</span></span><span class="context-chip"><span class="context-chip-key">project</span><span class="context-chip-value">Citrus Launch</span></span><span class="context-chip"><span class="context-chip-key">skill</span><span class="context-chip-value">Short Product Films</span></span><span class="context-chip"><span class="context-chip-key">target model</span><span class="context-chip-value">generic</span></span>
-    </div>
   </header>
 
-  <main class="app-main">
+  <main class="app-main" id="main">
 
-    <section class="title-band">
-      <p class="eyebrow">Human-guided creative search</p>
-      <h1>Idea Search Engine</h1>
-      <p class="hero-sub">Compare creative directions, explain your preferences, and decide which guidance the AI carries into its next attempt.</p>
-      <p class="demo-disclosure">A recorded walkthrough using fixed mock outputs. Choose a stage to inspect how critique becomes memory.</p>
-      <a class="method-link" href="#method">Evidence and method</a>
+    <section class="title-band idea-intro" aria-labelledby="page-title">
+      <div class="idea-intro-copy">
+        <p class="eyebrow">Creative search &middot; Human judgment &middot; Memory</p>
+        <h1 id="page-title">Idea Search</h1>
+        <p class="idea-thesis">Messy human judgment becomes <strong>modular memory.</strong></p>
+        <p class="hero-sub">Compare concrete creative directions. Say what works, what misses, and why. Review the guidance extracted from that judgment, then carry the pieces you accept into later AI-generated creative searches.</p>
+        <div class="intro-links"><a class="intro-primary" href="#loop">Explore the recorded loop</a><a class="method-link" href="#memory">What makes memory modular?</a></div>
+      </div>
+      <aside class="origin-note" aria-labelledby="origin-note-title">
+        <p class="eyebrow">The finding that shaped the tool</p>
+        <h2 id="origin-note-title">The strongest preference signal still needed human examples.</h2>
+        <p>In my creative-text experiments, the strongest automated preference signals depended on <strong>human-labeled examples for the same writing prompt.</strong></p>
+        <p>Those findings shaped Idea Search: preserve the judgment and its context so they can inform the next search.</p>
+        <a href="https://eduardo1100.github.io/selector-remains-human/">Read the creative-text experiments</a>
+        <p class="origin-signature">Eduardo Cortes &middot; Research &amp; engineering</p>
+      </aside>
     </section>
 
     <section class="region region-loop" id="loop">
       <div class="workspace-bar">
         <div class="workspace-intro">
-          <p class="workspace-intro-title">From critique to the next batch</p>
-          <p class="workspace-intro-sub">Follow one citrus-fragrance brief through comparison, judgment, approval, and regeneration.</p>
+          <p class="workspace-intro-title">One brief. Two batches. A memory that connects them.</p>
+          <p class="workspace-intro-sub">Follow a citrus-fragrance concept from the first alternatives to a search informed by accepted guidance.</p>
           <p class="workspace-note">Recorded example &middot; Select a stage</p>
         </div>
+        <p class="demo-disclosure">Recorded example with scripted candidates, feedback, and model outputs. Stage links explore the record; generation and decision controls show saved actions.</p>
         <nav class="stage-switcher" aria-label="Workflow stage">
           <a class="stage-tab is-default-tab" href="#stage-compare"><span class="stage-tab-no">01</span><span class="stage-tab-title">Compare</span><span class="stage-tab-desc">Review the starting set</span></a><a class="stage-tab" href="#stage-judge"><span class="stage-tab-no">02</span><span class="stage-tab-title">Judge</span><span class="stage-tab-desc">Write grounded feedback</span></a><a class="stage-tab" href="#stage-propose"><span class="stage-tab-no">03</span><span class="stage-tab-title">Propose</span><span class="stage-tab-desc">Inspect drafted guidance</span></a><a class="stage-tab" href="#stage-decide"><span class="stage-tab-no">04</span><span class="stage-tab-title">Decide</span><span class="stage-tab-desc">Accept, edit, or reject</span></a><a class="stage-tab" href="#stage-regenerate"><span class="stage-tab-no">05</span><span class="stage-tab-title">Regenerate</span><span class="stage-tab-desc">Apply accepted memory</span></a><a class="stage-tab" href="#stage-trace"><span class="stage-tab-no">06</span><span class="stage-tab-title">Trace</span><span class="stage-tab-desc">Audit what carried forward</span></a>
         </nav>
@@ -1359,7 +1481,7 @@ body { font-size: 16px; }
 
 
       <section class="stage-panel" id="stage-judge" aria-label="Judge stage">
-        <div class="stage-explainer"><span class="eyebrow">Step 02 / 06</span><h2>Critique the specific idea in front of you.</h2><p>The feedback names what works, what fails, and what should survive the next attempt. It remains attached to that candidate.</p></div>
+        <div class="stage-explainer"><span class="eyebrow">Step 02 / 06</span><h2>Let the judgment be messy. Keep it grounded.</h2><p>One reaction can contain praise, a practical constraint, and a correction at once. The original wording stays attached to the candidate and brief that gave it meaning.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -1479,7 +1601,7 @@ body { font-size: 16px; }
 
 
       <section class="stage-panel" id="stage-propose" aria-label="Propose stage">
-        <div class="stage-explainer"><span class="eyebrow">Step 03 / 06</span><h2>The model drafts guidance from the critique.</h2><p>These are proposals for memory. Drafting them does not make them part of future generation.</p></div>
+        <div class="stage-explainer"><span class="eyebrow">Step 03 / 06</span><h2>Separate the reaction into reviewable pieces.</h2><p>The model proposes individual instructions: preserve a useful pattern, avoid a distracting element, or keep a constraint. Each proposal retains its source. It becomes memory only after a decision.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -1701,7 +1823,7 @@ body { font-size: 16px; }
 
 
       <section class="stage-panel" id="stage-decide" aria-label="Decide stage">
-        <div class="stage-explainer"><span class="eyebrow">Step 04 / 06</span><h2>The person decides what becomes memory.</h2><p>Accept useful guidance, correct an overgeneralization, or reject a proposal. Only accepted guidance can carry forward.</p></div>
+        <div class="stage-explainer"><span class="eyebrow">Step 04 / 06</span><h2>Decide what the critique actually meant.</h2><p>Accept useful guidance, edit an instruction that narrows the idea too far, and reject an inference you did not intend. In this record, four items are accepted, one is rejected, and one remains pending.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -1930,7 +2052,7 @@ body { font-size: 16px; }
 
 
       <section class="stage-panel" id="stage-regenerate" aria-label="Regenerate stage">
-        <div class="stage-explainer"><span class="eyebrow">Step 05 / 06</span><h2>The next batch receives the accepted guidance.</h2><p>Four accepted memory items enter this recorded generation. The fixture shows the handoff using scripted model outputs.</p></div>
+        <div class="stage-explainer"><span class="eyebrow">Step 05 / 06</span><h2>Search again with the memory you chose.</h2><p>The recorded second batch receives four accepted items as generation context. Rejected and pending proposals stay out. The example demonstrates the handoff using scripted outputs.</p></div>
 
       <aside class="recipe-rail" aria-label="Generation recipe">
         <p class="recipe-rail-title">Generation recipe</p>
@@ -2254,8 +2376,23 @@ body { font-size: 16px; }
 
       <section class="region" id="memory">
         <div class="region-head">
-          <h2>Memory</h2>
-          <p class="region-note">Durable skill memory: what was accepted, what taught the proposer, and when it changed.</p>
+          <h2>What makes the memory modular?</h2>
+          <p class="region-note">Separate pieces of guidance, each with a source, a scope, and a decision.</p>
+        </div>
+        <p class="section-lead">A critique becomes a collection of instructions you can inspect and choose for another search. The original judgment remains available beside the accepted guidance.</p>
+        <div class="memory-principles">
+          <article class="panel"><p class="eyebrow">01 / Separate</p><h3>One idea per entry.</h3><p>Preserve a physical transformation, keep the product legible, or avoid competing tricks. Each instruction can be reviewed on its own.</p></article>
+          <article class="panel"><p class="eyebrow">02 / Select</p><h3>Choose the context for the next search.</h3><p>The application offers all accepted memory, selected entries, or no memory for a batch. This record uses all four accepted entries.</p></article>
+          <article class="panel"><p class="eyebrow">03 / Trace</p><h3>Keep the conditions of judgment.</h3><p>Entries retain their scope, strength, source candidate, feedback, and approval history. The receipt shows where the instruction came from.</p></article>
+        </div>
+        <div class="memory-example" aria-labelledby="memory-example-title">
+          <div class="memory-example-head"><p class="eyebrow">Inside the recorded example</p><h3 id="memory-example-title">The correction is part of the memory.</h3><p>The critique asks for a legible product. The person can keep that intent while changing the model&rsquo;s proposed solution.</p></div>
+          <div class="memory-example-grid">
+            <article><span class="example-label">Original judgment &middot; C1</span><blockquote>&ldquo;But the bottle is never legible; I get texture and no product. Keep the transformation, end on the bottle.&rdquo;</blockquote></article>
+            <article><span class="example-label">Model proposal</span><p>End on a clean product shot.</p><span class="example-note">A specific shot prescription.</span></article>
+            <article class="accepted-example"><span class="example-label">Edited and accepted</span><p>Keep the product legible in the final beat.</p><span class="example-note">The requirement survives; the next concept can solve it differently.</span></article>
+          </div>
+          <a class="receipt-link" href="evidence/fixture/receipts/memory_receipt_2.md">Inspect this memory&rsquo;s source receipt</a>
         </div>
         <div class="memory-grid">
           <section class="panel" data-review-target="memory-proposals">
@@ -2473,29 +2610,29 @@ body { font-size: 16px; }
 
       <section class="region" id="method">
         <div class="region-head">
-          <h2>Why this was built</h2>
-          <p class="region-note">A complete local application, shown through a recorded example.</p>
+          <h2>From selector experiments to Idea Search.</h2>
+          <p class="region-note">The research motivated the design. The walkthrough demonstrates its mechanics.</p>
+        </div>
+        <div class="research-bridge">
+          <div><p class="eyebrow">Research observation</p><h3>Useful preference signals depended on local human examples.</h3><p>The creative-text experiments found the strongest automated signals with human-labeled responses to the same prompt. Specific comparisons preserved a preference boundary that averaging the reference set lost. Cross-prompt controls did not establish a general creative evaluator.</p><a href="https://eduardo1100.github.io/selector-remains-human/#evidence">Explore the findings and controls</a></div>
+          <div><p class="eyebrow">Engineering response</p><h3>Give judgment a durable, inspectable form.</h3><p>Idea Search preserves concrete alternatives, natural-language critique, and individual decisions about what should guide future work. Reuse is explicit: the person chooses which accepted instructions fit the next search.</p><p class="bridge-boundary">Reusing guidance is a design choice that can be inspected. Its usefulness on a new prompt or project still needs to be judged.</p></div>
         </div>
         <div class="method-overview">
           <article class="panel">
-            <h3>Feedback should survive the next round.</h3>
-            <p>Creative critique usually stays in a person's head, a chat, or an isolated note.
-            Idea Search ties it to a candidate and turns accepted guidance into memory for later searches.</p>
+            <h3>Keep the reasoning inside the reaction.</h3>
+            <p>&ldquo;More like this&rdquo; can mean its material, pacing, feasibility, or emotional effect. A natural-language critique can explain the distinction. Idea Search keeps that wording beside the candidate it refers to.</p>
           </article>
           <article class="panel">
-            <h3>The person controls what carries forward.</h3>
-            <p>I built candidate and batch versioning, natural-language feedback, memory proposals,
-            accept/edit/reject decisions, later-generation handoffs, and the records that connect them.</p>
+            <h3>Make generalization a human decision.</h3>
+            <p>A complaint about one crowded concept is not necessarily a ban on its colors. Accepting, editing, and rejecting proposals lets the person decide which lessons should outlive the example.</p>
           </article>
           <article class="panel">
-            <h3>What the walkthrough demonstrates.</h3>
-            <p>The fixture exercises the real backend's persistence, approval, scoping, and provenance
-            mechanics. Its model outputs are scripted; it does not measure generation quality or production usage.</p>
+            <h3>Know what the next search inherited.</h3>
+            <p>A batch records the accepted memory supplied to generation and its fingerprint. The ledger and receipts connect that context to the judgments and decisions that created it.</p>
           </article>
         </div>
-        <p class="research-connection">The design grew from my experiments on automated creative selection.
-        <a href="https://eduardo1100.github.io/selector-remains-human/">Read the selector research</a>.</p>
-        <details class="method-details">
+        <p class="research-connection">I built the complete local application: candidate and batch versioning, prompt assembly, feedback analysis, memory decisions, generation handoffs, and their provenance records. This public showcase presents one recorded loop.</p>
+        <details class="method-details" id="evidence">
           <summary>Architecture, source evidence, and limitations</summary>
         <div class="method-grid">
           <section class="panel">
@@ -2507,8 +2644,7 @@ body { font-size: 16px; }
               and do nothing.
             </p>
             <p class="disclosure">The model drafts prompts. You decide what carries forward.</p>
-            <p class="disclosure">Idea Search Engine is the Manifold Studio presentation of the system originally developed as Subjective Skill Studio.</p>
-            <p class="disclosure">This showcase presents the pre-participation Subjective Skill Studio system within the Manifold product family. Its deterministic evidence remains tied to the audited source snapshot; later Manifold participation features are not represented here.</p>
+            <p class="disclosure">Idea Search was originally developed as Subjective Skill Studio. The evidence remains tied to that application&rsquo;s audited source snapshot. The public showcase is named <span class="mono">Idea_Search_Showcase</span>; the application source remains private.</p>
           </section>
 
           <section class="panel">
@@ -2529,7 +2665,7 @@ body { font-size: 16px; }
             <h3>The creator problem</h3>
             <p>
               Creative feedback usually disappears between rounds: it stays in the
-              creator&rsquo;s head, a chat transcript, or an isolated note. This studio attaches
+              creator&rsquo;s head, a chat transcript, or an isolated note. Idea Search attaches
               that reasoning to the exact candidate being judged, and makes only explicitly
               approved guidance available to later generation.
             </p>
@@ -2556,7 +2692,7 @@ body { font-size: 16px; }
               content-sensitive proposal quality or improved creative outputs.
             </p>
             <p>
-              Every card, quote, and stamp above is read directly from
+              The recorded candidate text, judgments, memory decisions, and stamps come from
               <span class="mono">evidence/fixture/loop.json</span>, generated by
               <span class="mono">evidence/generate_fixture.py</span> against source snapshot
               commit <span class="mono">82ed65dc01c2</span>
@@ -2611,7 +2747,7 @@ body { font-size: 16px; }
 
   <footer class="site-footer">
     <p>
-      Manifold Studio &middot; Idea Search Engine. Generated
+      Idea Search Showcase &middot; Eduardo Cortes. Recorded evidence generated
       deterministically from source snapshot commit
       <span class="mono">82ed65dc01c2</span>.
       &copy; 2026 Eduardo Cortes. All rights reserved.
@@ -2619,6 +2755,32 @@ body { font-size: 16px; }
   </footer>
 </div>
 
+<script>
+// Navigation only: the generation and memory records remain a static fixture.
+(function () {
+  const evidence = document.getElementById('evidence');
+  const stageLinks = Array.from(document.querySelectorAll('.stage-tab'));
+  const sectionLinks = Array.from(document.querySelectorAll('.app-nav-link'));
+  function syncNavigation() {
+    const hash = window.location.hash;
+    if (hash === '#evidence') evidence.open = true;
+    const activeStage = stageLinks.some(link => link.hash === hash) ? hash : '#stage-compare';
+    stageLinks.forEach(link => {
+      if (link.hash === activeStage) link.setAttribute('aria-current', 'step');
+      else link.removeAttribute('aria-current');
+    });
+    const activeSection = hash.startsWith('#stage-') ? '#loop'
+      : sectionLinks.some(link => link.hash === hash) ? hash : '#loop';
+    sectionLinks.forEach(link => {
+      if (link.hash === activeSection) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  }
+  document.querySelectorAll('a[href="#evidence"]').forEach(link =>
+    link.addEventListener('click', () => { evidence.open = true; }));
+  window.addEventListener('hashchange', syncNavigation);
+  syncNavigation();
+})();
+</script>
 </body>
 </html>
-
